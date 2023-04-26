@@ -2,11 +2,16 @@
 //
 
 #include "LinkItDoubleTimes.h"
+#include "List.h"
 
 using namespace std;
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	List<int> data;
+
+	data.add()
+
+
 	return 0;
 }
