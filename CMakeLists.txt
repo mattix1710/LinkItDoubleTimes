@@ -12,7 +12,7 @@ endif()
 project ("LinkItDoubleTimes")
 
 # Dodaj źródło do pliku wykonywalnego tego projektu.
-add_executable (LinkItDoubleTimes "LinkItDoubleTimes.cpp" "LinkItDoubleTimes.h" "Link.h" "List.h" "Iterator.h" "List.cpp")
+add_executable (LinkItDoubleTimes "LinkItDoubleTimes.cpp" "LinkItDoubleTimes.h" "Link.h" "List.h"  "List.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET LinkItDoubleTimes PROPERTY CXX_STANDARD 20)

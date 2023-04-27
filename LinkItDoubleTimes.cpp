@@ -3,6 +3,7 @@
 
 #include "LinkItDoubleTimes.h"
 #include "List.h"
+#include "List.cpp"				// when using templates - it is necessary to include also .cpp files!
 
 using namespace std;
 

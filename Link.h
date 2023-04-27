@@ -1,8 +1,7 @@
 #pragma once
 #include <iostream>
 
-template <class T> class Iterator;		// declaration of a friend template class Iterator
-template <class T> class List;			// -||-
+template <class T> class List;			// declaration of a friend template class List
 
 template <class T>
 class Link {
@@ -23,7 +22,6 @@ public:
 	void setNext(Link<T>*);
 
 	friend class List<T>;
-	friend class Iterator<T>;
 };
 
 template <class T>
