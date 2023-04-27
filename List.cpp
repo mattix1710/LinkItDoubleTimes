@@ -32,12 +32,32 @@ T List<T>::getAt(uint position) {
 	return current->getVal();
 }
 
-// TODO: repair that method! - it doesn't add new elements to the list
+// ADDS A NEW ELEMENT AT THE BEGINNING OF THE LIST
+template<class T>
+void List<T>::push(T val)
+{
+	Link<T>* node = new Link<T>(val, this->first, nullptr);
+
+	// if there is no node in the list yet
+	if (this->first == nullptr) {
+		this->first = node;
+		this->last = node;
+	}
+	else {
+		this->first->setPrevious(node);
+		this->first = node;
+	}
+	this->quantity++;
+
+	std::cout << "Added element " << val << " to the beginning of the list!" << std::endl;
+}
+
 template <class T>
 void List<T>::add(T val) {
 	// if there is no element in the list yet
 	Link<T>* node = new Link<T>(val, nullptr, this->last);
 
+	// if there is no node in the list yet
 	if (this->first == nullptr) {
 		this->first = node;
 		this->last = node;
@@ -48,7 +68,7 @@ void List<T>::add(T val) {
 	}
 	this->quantity++;
 
-	std::cout << "Added element " << val << " to the list!" << std::endl;
+	std::cout << "Added element " << val << " to the end of the list!" << std::endl;
 }
 
 template <class T>

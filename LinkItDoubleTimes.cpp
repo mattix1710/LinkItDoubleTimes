@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-	List<int> data = List<int>(nullptr);
+	List<int> data = List<int>();
 	data.add(5);
 	data.add(234);
 	data.add(-3);

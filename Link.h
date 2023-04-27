@@ -20,6 +20,7 @@ public:
 	Link* getNext() { return next; };
 	Link* getPrevious() { return previous; };
 	void setNext(Link<T>*);
+	void setPrevious(Link<T>*);
 
 	friend class List<T>;
 };
@@ -39,4 +40,9 @@ Link<T>* Link<T>::insert_before(T& toInsert) {
 template <class T>
 void Link<T>::setNext(Link<T>* next) {
 	this->next = next;
+}
+
+template <class T>
+void Link<T>::setPrevious(Link<T>* previous) {
+	this->previous = previous;
 }
