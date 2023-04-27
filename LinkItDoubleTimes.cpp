@@ -8,9 +8,12 @@ using namespace std;
 
 int main()
 {
-	List<int> data;
+	List<int> data = List<int>(nullptr);
+	data.add(5);
+	data.add(234);
+	data.add(-3);
 
-	data.add()
+	data.listData();
 
 
 	return 0;

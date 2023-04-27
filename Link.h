@@ -20,6 +20,7 @@ public:
 	T getVal() { return val; };
 	Link* getNext() { return next; };
 	Link* getPrevious() { return previous; };
+	void setNext(Link<T>*);
 
 	friend class List<T>;
 	friend class Iterator<T>;
@@ -35,4 +36,9 @@ template <class T>
 Link<T>* Link<T>::insert_before(T& toInsert) {
 	previous = new Link<T>(toInsert, this, previous);
 	return previous;
+}
+
+template <class T>
+void Link<T>::setNext(Link<T>* next) {
+	this->next = next;
 }
