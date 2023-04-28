@@ -62,12 +62,23 @@ void List<T>::addAt(T val, int pos)
 
 	Link<T>* node = nullptr;
 	
-	if (pos > this->quantity/2) {
+	if (pos == this->quantity) {
+		this->add(val);
+		return;
+	}
+	else if (pos == 0) {
+		this->push(val);
+		return;
+	}
+	else if (pos > this->quantity/2) {
 		node = this->last;
-		for (uint pivot = this->quantity; pivot != pos; pivot--) {
+		
+		for (uint pivot = this->quantity-1; pivot != pos; pivot--) {
 			node = node->getPrevious();
 		}
+
 		Link<T>* newNode = new Link<T>(val, node, node->getPrevious());
+		node->getPrevious()->setNext(newNode);
 		node->setPrevious(newNode);
 	}
 	else {
@@ -76,9 +87,10 @@ void List<T>::addAt(T val, int pos)
 			node = node->getNext();
 		}
 		Link<T>* newNode = new Link<T>(val, node, node->getPrevious());
+		node->getPrevious()->setNext(newNode);
 		node->setPrevious(newNode);
 	}
-
+	this->quantity++;
 	std::cout << "Value of " << val << " has been inserted at position of " << pos << "!" << std::endl;
 }
 
@@ -109,4 +121,20 @@ void List<T>::listData() {
 	}
 	std::cout << std::endl << "::==::" << std::endl;
 	std::cout << "Quantity: " << this->quantity << std::endl;
+}
+
+template <class T>
+T List<T>::get() {
+	try {
+		if (this->quantity > 0) {
+			return this->last->getVal();
+		}
+		else {
+			// if there is no element in the list
+			throw nullptr;
+		}
+	}
+	catch (...) {
+		std::cout << "No element in the list!" << std::endl;
+	}
 }

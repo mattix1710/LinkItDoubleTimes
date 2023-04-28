@@ -16,15 +16,22 @@ public:
 	//List(Link<T>* first_ = nullptr, Link<T>* last_ = nullptr) : first(first_), last(last_) {};
 
 	// TODO: delete all pointers used in list when deleting list
-	// TODO: use unique_ptr or other version (??)
-	~List() {};
+	~List() {
+		/*Link<T>* currNode = this->first;
+		Link<T>* nextNode = currNode->getNext();
+		while (currNode != nullptr) {
+			delete currNode;
+			currNode = nextNode;
+			nextNode = currNode->getNext();
+		}*/
+	};
 
-	void add(T);
-	void push(T);
-	void addAt(T, int);
-	//Link<T>* get() { return last; };
-	//Link<T>* getAt(uint);
-	T get() { return last->val(); };
-	T getAt(uint position);
+	void add(T);					// add new element at the beginning of the list
+	void push(T);					// add new element at the end of the list
+	void addAt(T val, int pos);		// add new element at pos in the list
+	T get();						// get the last element from the list
+	T getAt(uint position);			// get the element at post in the list
+
+	// AUXILIARY
 	void listData();
 };
