@@ -52,6 +52,36 @@ void List<T>::push(T val)
 	std::cout << "Added element " << val << " to the beginning of the list!" << std::endl;
 }
 
+template<class T>
+void List<T>::addAt(T val, int pos)
+{
+	if (pos > this->quantity || pos < 0) {
+		std::cout << "Selected position is out of range!" << std::endl;
+		return;
+	}
+
+	Link<T>* node = nullptr;
+	
+	if (pos > this->quantity/2) {
+		node = this->last;
+		for (uint pivot = this->quantity; pivot != pos; pivot--) {
+			node = node->getPrevious();
+		}
+		Link<T>* newNode = new Link<T>(val, node, node->getPrevious());
+		node->setPrevious(newNode);
+	}
+	else {
+		node = this->first;
+		for (uint pivot = this->quantity; pivot != pos; pivot++) {
+			node = node->getNext();
+		}
+		Link<T>* newNode = new Link<T>(val, node, node->getPrevious());
+		node->setPrevious(newNode);
+	}
+
+	std::cout << "Value of " << val << " has been inserted at position of " << pos << "!" << std::endl;
+}
+
 template <class T>
 void List<T>::add(T val) {
 	// if there is no element in the list yet

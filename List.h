@@ -21,9 +21,10 @@ public:
 
 	void add(T);
 	void push(T);
-	//void addAt(T, int);
-	Link<T>* get() { return last; };
+	void addAt(T, int);
+	//Link<T>* get() { return last; };
 	//Link<T>* getAt(uint);
+	T get() { return last->val(); };
 	T getAt(uint position);
 	void listData();
 };
