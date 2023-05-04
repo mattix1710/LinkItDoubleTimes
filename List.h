@@ -17,13 +17,15 @@ public:
 
 	// TODO: delete all pointers used in list when deleting list
 	~List() {
-		/*Link<T>* currNode = this->first;
-		Link<T>* nextNode = currNode->getNext();
-		while (currNode != nullptr) {
+		Link<T>* currNode;
+		// while currNode won't reach the end of the list
+		while (this->first != nullptr) {
+			currNode = this->first;
+			this->first = currNode->getNext();
 			delete currNode;
-			currNode = nextNode;
-			nextNode = currNode->getNext();
-		}*/
+		}
+		this->first = nullptr;
+		this->last = nullptr;
 	};
 
 	void add(T);					// add new element at the beginning of the list

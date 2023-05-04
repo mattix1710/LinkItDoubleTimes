@@ -9,6 +9,7 @@ using namespace std;
 
 int main()
 {
+	// equivalent of "Create()" function that creates an empty list
 	List<int> data = List<int>();
 	data.add(5);
 	data.add(234);
