@@ -13,11 +13,13 @@ int main()
 	data.add(5);
 	data.add(234);
 	data.add(-3);
-	data.addAt(1532, 2);
-	data.addAt(32, 0);
-	printf("%d", data.get());
+	data.add_at(1532, 2);
+	data.add_at(32, 0);
+	printf("%d\n", data.get());
 
-	//data.listData();
+	data.listData();
+	data.pop();
+	data.listData();
 
 
 	return 0;

@@ -6,7 +6,7 @@
 #define uint unsigned int
 
 template <class T>
-T List<T>::getAt(uint position) {
+T List<T>::get_at(uint position) {
 	// first element is at position 0
 	uint pivot = this->quantity; // 2
 	Link<T>* current = nullptr;
@@ -53,7 +53,7 @@ void List<T>::push(T val)
 }
 
 template<class T>
-void List<T>::addAt(T val, int pos)
+void List<T>::add_at(T val, int pos)
 {
 	if (pos > this->quantity || pos < 0) {
 		std::cout << "Selected position is out of range!" << std::endl;
@@ -73,7 +73,7 @@ void List<T>::addAt(T val, int pos)
 	else if (pos > this->quantity/2) {
 		node = this->last;
 		
-		for (uint pivot = this->quantity-1; pivot != pos; pivot--) {
+		for (uint pivot = this->quantity-1; pivot > pos; pivot--) {
 			node = node->getPrevious();
 		}
 
@@ -83,7 +83,7 @@ void List<T>::addAt(T val, int pos)
 	}
 	else {
 		node = this->first;
-		for (uint pivot = this->quantity; pivot != pos; pivot++) {
+		for (uint pivot = this->quantity; pivot < pos; pivot++) {
 			node = node->getNext();
 		}
 		Link<T>* newNode = new Link<T>(val, node, node->getPrevious());
@@ -123,6 +123,80 @@ void List<T>::listData() {
 	std::cout << "Quantity: " << this->quantity << std::endl;
 }
 
+template<class T>
+T List<T>::pop()
+{
+	Link<T>* toRemove = this->first;
+	T aux = toRemove->getVal();
+	this->first = this->first->getNext();
+	this->first->setPrevious(nullptr);
+	delete toRemove;
+	this->quantity--;
+
+	return aux;
+}
+
+template<class T>
+T List<T>::remove_at(uint position)
+{
+	try {
+		if (this->quantity > 0 && position >= 0 && position < this->quantity) {
+			Link<T>* node = nullptr;
+			T val;
+			if (position == this->quantity) {
+				// if last node - change assigned pointer and set next pointer to nullptr
+				node = this->last;
+				this->last = this->last->getPrevious();
+				this->last->setNext(nullptr);
+				val = node->getVal();
+				delete node;
+			}
+			else if (position == 0) {
+				node = this->first;
+				this->first = this->first->getNext();
+				this->first->setPrevious(nullptr);
+				val = node->getVal();
+				delete node;
+			}
+			else if (position > this->quantity / 2) {
+				node = this->last;
+
+				for (uint pivot = this->quantity - 1; pivot > position; pivot--) {
+					node = node->getPrevious();
+				}
+
+				val = node->getVal();
+				node->getPrevious()->setNext(node->getNext());
+				node->getNext()->setPrevious(node->getPrevious());
+				delete node;
+			}
+			else {
+				node = this->first;
+
+				for (uint pivot = 0; pivot < position; pivot++) {
+					node = node->getNex();
+				}
+
+				val = node->getVal();
+				node->getPrevious()->setNext(node->getNext());
+				node->getNext()->setPrevious(node->getPrevious());
+				delete node;
+			}
+
+			this->quantity--;
+			return val;
+		}
+		else {
+			// if there is no element in the list or selected position doesn't match currents list size
+			throw nullptr;
+		}
+	}
+	catch (...) {
+		std::cout << "ERROR: Invalid argument position!" << std::endl;
+	}
+	
+}
+
 template <class T>
 T List<T>::get() {
 	try {
@@ -135,6 +209,6 @@ T List<T>::get() {
 		}
 	}
 	catch (...) {
-		std::cout << "No element in the list!" << std::endl;
+		std::cout << "ERROR: No element in the list!" << std::endl;
 	}
 }
