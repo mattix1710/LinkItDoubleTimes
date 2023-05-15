@@ -35,7 +35,8 @@ public:
 	T get_at(uint position);		// get the element at position in the list
 	T pop();						// pop the element from the beginning of the list and return the value
 	T remove_at(uint position);		// remove the element from the position in the list and return the value
-
+	void sort();						// sorts a list 
+	void display();					// Displays a list
 	// AUXILIARY
 	void listData();
 };

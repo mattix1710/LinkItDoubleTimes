@@ -22,6 +22,11 @@ int main()
 	data.pop();
 	data.listData();
 
+	data.display();
+	data.sort();
+	data.display();
+
+
 
 	return 0;
 }

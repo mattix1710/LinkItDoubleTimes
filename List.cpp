@@ -212,3 +212,46 @@ T List<T>::get() {
 		std::cout << "ERROR: No element in the list!" << std::endl;
 	}
 }
+
+template <class T>
+void List<T>::sort() {
+	if (this->quantity <= 1) {
+		// List is already sorted or empty
+		return;
+	}
+
+	bool swapped = true;
+	while (swapped) {
+		swapped = false;
+		Link<T>* current = this->first;
+		Link<T>* previous = nullptr;
+
+		while (current != nullptr && current->getNext() != nullptr) {
+			if (current->getVal() > current->getNext()->getVal()) {
+				// Swap values
+				T temp = current->getVal();
+				current->setVal(current->getNext()->getVal());
+				current->getNext()->setVal(temp);
+				swapped = true;
+			}
+
+			previous = current;
+			current = current->getNext();
+		}
+	}
+} 
+template  <class T>
+void List<T>::display() {
+	std::cout << "List: ";
+	for (Link<T>* currNode = this->first; currNode != nullptr; currNode = currNode->getNext()) {
+		  std::cout << currNode->getVal() << " ";
+	}
+	 std::cout << std::endl;
+}
+
+
+
+
+
+
+

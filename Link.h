@@ -17,6 +17,7 @@ public:
 	Link<T>* insert_before(T&);
 
 	T getVal() { return val; };
+	void setVal(const T& value) { val = value; }
 	Link* getNext() { return next; };
 	Link* getPrevious() { return previous; };
 	void setNext(Link<T>*);
