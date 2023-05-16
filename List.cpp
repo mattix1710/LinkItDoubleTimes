@@ -174,7 +174,7 @@ T List<T>::remove_at(uint position)
 				node = this->first;
 
 				for (uint pivot = 0; pivot < position; pivot++) {
-					node = node->getNex();
+					node = node->getNext();
 				}
 
 				val = node->getVal();
