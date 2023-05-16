@@ -17,16 +17,27 @@ int main()
 	data.add_at(1532, 2);
 	data.add_at(32, 0);
 	printf("%d\n", data.get());
-
-	data.listData();
+	
+	data.display();
+	printf("Pop element.");
+	//data.listData();
 	data.pop();
-	data.listData();
+	//data.listData();
+	data.display();
+	
+	printf("Remove at pos 2.\n");
+	data.remove_at(2);
+	
+	printf("Pushing element 124\n");
+	data.push(124);
+	
+	printf("Pushing element -523\n");
+	data.push(-523);	
 
 	data.display();
 	data.sort();
+	printf("After sorting:\n:");
 	data.display();
-
-
 
 	return 0;
 }
